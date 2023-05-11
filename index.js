@@ -22,6 +22,12 @@ app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
 
-const statesRouter = require('./routes/states')
+const express = require('express');
+const app = express();
+const statesRouter = require('./routes/states');
 
-app.use('/states', statesRouter)
+app.use('/states', statesRouter);
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
