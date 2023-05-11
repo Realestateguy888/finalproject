@@ -4,30 +4,25 @@ const express = require('express');
 const mongoose = require('mongoose');
 const mongoString = process.env.DATABASE_URL;
 
-mongoose.connect(mongoString);
+mongoose.connect(mongoString, { useNewUrlParser: true, useUnifiedTopology: true });
+
 const database = mongoose.connection;
 
 database.on('error', (error) => {
-    console.log("Database connection error:", error)
-})
+    console.log("Database connection error:", error);
+});
 
-database.once('connected', () => {
+database.once('open', () => {
     console.log('Database Connected');
-})
+});
+
 const app = express();
 
 app.use(express.json());
 
-app.listen(3000, () => {
-    console.log(`Server Started at ${3000}`)
-})
-
-const express = require('express');
-const app = express();
 const statesRouter = require('./routes/states');
-
 app.use('/states', statesRouter);
 
 app.listen(3000, () => {
-  console.log('Server is running on port 3000');
+    console.log('Server is running on port 3000');
 });
