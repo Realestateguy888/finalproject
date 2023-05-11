@@ -1,0 +1,49 @@
+const express = require('express');
+const app = express();
+
+// Define the required endpoints
+
+app.get('/', (req, res) => {
+    res.send('<h1>Welcome to the API!</h1>');  // should return an HTML document
+});
+
+app.get('/states/', (req, res) => {
+    // Fetch data from your MongoDB database here and send as response
+    // Ensure that you handle queries like ?contig=true or ?contig=false
+    // The data should include all the required properties and funfacts for specific states
+});
+
+app.get('/states/:state', (req, res) => {
+    // Fetch data for the specific state from your MongoDB database here and send as response
+    // The state parameter should be case-insensitive
+});
+
+app.get('/states/:state/funfact', (req, res) => {
+    // Fetch funfact for the specific state from your MongoDB database here and send as response
+    // The state parameter should be case-insensitive
+    // If there are no funfacts for the state, return a 404 status and a message
+});
+
+// Define similar endpoints for /states/:state/capital, /states/:state/nickname, /states/:state/population, /states/:state/admission
+
+app.post('/states/:state/funfact', (req, res) => {
+    // Add a funfact for the specific state in your MongoDB database here and send a response
+    // The state parameter should be case-insensitive
+    // If no funfacts are provided or if they are not in an array, return a message
+});
+
+app.patch('/states/:state/funfact', (req, res) => {
+    // Update a funfact for the specific state in your MongoDB database here and send a response
+    // The state parameter should be case-insensitive
+    // If no funfacts exist to update or if the index does not exist, return a message
+});
+
+app.delete('/states/:state/funfact', (req, res) => {
+    // Delete a funfact for the specific state in your MongoDB database here and send a response
+    // The state parameter should be case-insensitive
+    // If no funfacts exist to delete or if the index does not exist, return a message
+});
+
+app.listen(3000, () => {
+    console.log(`Server Started at ${3000}`)
+});
