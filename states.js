@@ -1,3 +1,9 @@
-const router = express.Router()
-router.get('/', (req, res) => { /* fetch all state data from MongoDB and send as response */ })
-module.exports = router
+const express = require('express');
+const router = express.Router();
+
+router.get('/', (req, res) => {
+    // Fetch all state data from your MongoDB database here
+    // Send the data as a response
+});
+
+module.exports = router;
