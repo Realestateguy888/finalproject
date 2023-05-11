@@ -22,8 +22,6 @@ app.listen(3000, () => {
     console.log(`Server Started at ${3000}`)
 })
 
-const routes = require('./routes/routes');
+const statesRouter = require('./routes/states')
 
-app.use('/api', routes)
-
-module.exports = router;
+app.use('/states', statesRouter)
